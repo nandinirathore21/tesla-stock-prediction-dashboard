@@ -52,7 +52,8 @@ with st.sidebar:
 # --- 4. Data Layer Caching ---
 @st.cache_data
 def load_data():
-    df = pd.read_csv("/content/TSLA.csv")
+    # FIXED: Path changed from '/content/TSLA.csv' to 'TSLA.csv' for GitHub deployment
+    df = pd.read_csv("TSLA.csv")
     df['Date'] = pd.to_datetime(df['Date'])
     return df
 
@@ -145,4 +146,4 @@ try:
         )
 
 except FileNotFoundError:
-    st.error("⚠️ System Error: Unable to extract path resource `/content/TSLA.csv`.")
+    st.error("⚠️ System Error: Unable to locate 'TSLA.csv' inside your repository directory structure.")
